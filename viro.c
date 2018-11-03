@@ -72,6 +72,25 @@ short int amostras_invalida (short int errado)
   return errado;
 }
 
+void nova_reacao (void)
+{
+  char newsample = ' ';
+  //Dá ao usuário a possibilidade de fazer uma nova reação
+  printf("\nGostaria de fazer outra reação?");
+  printf("\nDigite s para sim e n para não\n");
+  scanf("%c", &newsample);
+  getchar();
+  //Checa por uma opção válida. Caso o usuário tecle 's', o loop
+  //reinicia sozinho, sem a necessidade de outro if
+  if (newsample != 's' && newsample != 'n')
+  {
+    newsample = char_invalida(newsample);
+  }
+  //Sai do programa
+  if (newsample == 'n')
+    exit(0);
+}
+
 int main ()
 {
 //setlocale(LC_ALL, "Portuguese");
@@ -130,7 +149,6 @@ OROV50.agua = 33.8;
 short int virus = 0;
 short int option = 0;
 short int amostras = 0;
-char newsample = ' ';
 while(1)
 	{
 	//Pergunta para o usuário, o tipo de vírus que ele usará
@@ -185,20 +203,7 @@ while(1)
 						printf("CHIKV env F 20pmol\t%.2f\n", CHIKV25.rna1*amostras);
 						printf("CHIKV env R 20pmol\t%.2f\n", CHIKV25.rna2*amostras);
 						printf("H2O\t\t\t%.2f\n", CHIKV25.agua*amostras);
-						//Dá ao usuário a possibilidade de fazer uma nova reação
-						printf("\nGostaria de fazer outra reação?");
-						printf("\nDigite s para sim e n para não\n");
-						scanf("%c", &newsample);
-						getchar();
-						//Checa por uma opção válida. Caso o usuário tecle 's', o loop
-						//reinicia sozinho, sem a necessidade de outro if
-						if (newsample != 's' && newsample != 'n')
-						{
-							newsample = char_invalida(newsample);
-						}
-						//Sai do programa
-						if (newsample == 'n')
-							break;
+						nova_reacao();
     			}
 				//Reação 50 para CHIKV
     		if (option == 2)
@@ -211,20 +216,7 @@ while(1)
     			      printf("CHIKV env F 20pmol\t%.2f\n", CHIKV50.rna1*amostras);
     				    printf("CHIKV env R 20pmol\t%.2f\n", CHIKV50.rna2*amostras);
                 printf("H2O\t\t\t%.2f\n", CHIKV50.agua*amostras);
-								//Dá ao usuário a possibilidade de fazer uma nova reação
-								printf("\nGostaria de fazer outra reação?");
-        				printf("\nDigite s para sim e n para não\n");
-                scanf("%c", &newsample);
-                getchar();
-								//Checa por uma opção válida. Caso o usuário tecle 's', o loop
-								//reinicia sozinho, sem a necessidade de outro if
-								if (newsample != 's' && newsample != 'n')
-								{
-									newsample = char_invalida(newsample);
-								}
-								//Sai do programa
-        				if (newsample == 'n')
-        					break;
+								nova_reacao();
     			}
 				//Reação 100 para CHIKV
 				if (option == 3)
@@ -237,20 +229,7 @@ while(1)
 						printf("CHIKV env F 20pmol\t%.2f\n", CHIKV100.rna1*amostras);
 						printf("CHIKV env R 20pmol\t%.2f\n", CHIKV100.rna2*amostras);
 						printf("H2O\t\t\t%.2f\n", CHIKV100.agua*amostras);
-						//Dá ao usuário a possibilidade de fazer uma nova reação
-						printf("\nGostaria de fazer outra reação?");
-						printf("\nDigite s para sim e n para não\n");
-						scanf("%c", &newsample);
-						getchar();
-						//Checa por uma opção válida. Caso o usuário tecle 's', o loop
-						//reinicia sozinho, sem a necessidade de outro if
-						if (newsample != 's' && newsample != 'n')
-						{
-							newsample = char_invalida(newsample);
-						}
-						//Sai do programa
-						if (newsample == 'n')
-							break;
+						nova_reacao();
     			}
       }
 //-----------------------------------------------------------------------------------
@@ -273,19 +252,7 @@ while(1)
 	    			      printf("CM3W 100pmol\t\t%.2f\n", MAYV50.rna1*amostras);
 	    				    printf("MAYV 30pmol\t\t%.2f\n", MAYV50.rna2*amostras);
 	                printf("H2O\t\t\t%.2f\n", MAYV50.agua*amostras);
-									//possibilidade de reiniciar o loop para nova reação
-	        				printf("\nGostaria de fazer outra reação?");
-	        				printf("\nDigite s para sim e n para não\n");
-	                scanf("%c", &newsample);
-	                getchar();
-									//Checa por opção válida
-									if (newsample != 's' && newsample != 'n')
-									{
-										newsample = char_invalida(newsample);
-									}
-									//Encerra o programa
-	        				if (newsample == 'n')
-	        					break;
+									nova_reacao();
 	    			}
 					//Reação 100 para MAYV
 	    		if (option == 3)
@@ -313,19 +280,7 @@ while(1)
 	    			      printf("ZIKA F 30pmol\t%.2f\n", ZIKAV50.rna1*amostras);
 	    				    printf("ZIKA R 30pmol\t%.2f\n", ZIKAV50.rna2*amostras);
 	                printf("H2O\t\t%.2f\n", ZIKAV50.agua*amostras);
-									//possibilidade de realizar uma nova reação
-	        				printf("\nGostaria de fazer outra reação?");
-	        				printf("\nDigite s para sim e n para não\n");
-	                scanf("%c", &newsample);
-	                getchar();
-									//Testa por uma opção válida
-									if (newsample != 's' && newsample != 'n')
-									{
-										newsample = char_invalida(newsample);
-									}
-									//Para o programa
-									if (newsample == 'n')
-	        					break;
+									nova_reacao();
 	    			}
 					//Reação de 100 para ZIKAV
 					if (option == 3)
@@ -353,19 +308,7 @@ while(1)
 	    			      printf("BS IS\t%.2f\n", OROV50.rna1*amostras);
 	    				    printf("BS IC\t%.2f\n", OROV50.rna2*amostras);
 	                printf("H2O\t\t\t%.2f\n", OROV50.agua*amostras);
-									//possibilidade de nova reação
-	        				printf("\nGostaria de fazer outra reação?");
-	        				printf("\nDigite s para sim e n para não\n");
-	                scanf("%c", &newsample);
-	                getchar();
-									//Testa por opção válida
-									if (newsample != 's' && newsample != 'n')
-									{
-										newsample = char_invalida(newsample);
-									}
-									//Encerra o programa
-	        				if (newsample == 'n')
-	        					break;
+									nova_reacao();
 	    			}
 					//Reação 100 para OROV
 					if (option == 3)
